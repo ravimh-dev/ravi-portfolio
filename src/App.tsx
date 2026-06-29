@@ -276,7 +276,7 @@ export default function App() {
 
   // Live Dashboard Simulated Query state
   const [sysTerminalLogs, setSysTerminalLogs] = useState<string[]>([
-    "// Systems online. Port 3000 mapping active.",
+    "// Systems online. Port 5000 mapping active.",
     "// Select a tenant below and click 'Trigger Query' to see PostgreSQL RLS logs:"
   ]);
   const [isSimulatingQuery, setIsSimulatingQuery] = useState(false);
@@ -285,7 +285,7 @@ export default function App() {
   const runSimulatedQuery = (tenantId: string) => {
     if (isSimulatingQuery) return;
     setIsSimulatingQuery(true);
-    setSysTerminalLogs([`[API] INITIATED: GET /api/v1/tenant/retailers · Host: localhost:3000`]);
+    setSysTerminalLogs([`[API] INITIATED: GET /api/v1/tenant/retailers · Host: localhost:5000`]);
     
     setTimeout(() => {
       setSysTerminalLogs(prev => [
@@ -388,7 +388,7 @@ export default function App() {
   const [bullJobs, setBullJobs] = useState(0);
   const [isStressTesting, setIsStressTesting] = useState(false);
   const [telemetryLogs, setTelemetryLogs] = useState<string[]>([
-    "[SYSTEM] Server cluster Node-0 online on port 3000.",
+    "[SYSTEM] Server cluster Node-0 online on port 4000.",
     "[SYSTEM] PostgreSQL socket connected. Redis database selected: db0"
   ]);
 
@@ -619,7 +619,7 @@ export default function App() {
     setDownloadLogs(["[INIT] Connecting to secure resume payload cluster..."]);
 
     const steps = [
-      { prg: 15, log: "[CONNECT] TLS v1.3 handshake successful. Port 3000 established." },
+      { prg: 15, log: "[CONNECT] TLS v1.3 handshake successful. Port 4000 established." },
       { prg: 35, log: "[FETCH] Re-indexing career metrics & relational multi-tenant schemas..." },
       { prg: 52, log: "[PARSE] Generating highly compressed JSON document tree..." },
       { prg: 70, log: "[SECURITY] Validating HMAC checksum & applying SHA-256 signature..." },
