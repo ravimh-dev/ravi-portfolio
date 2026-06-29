@@ -17,15 +17,19 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            set -e
+                set -e
 
-            cd /var/www/ravi-portfolio
+                export NVM_DIR="$HOME/.nvm"
+                [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-            git fetch origin
-            git reset --hard origin/main
+                nvm use 24
 
-            npm ci
-            npm run build
+                cd /var/www/ravi-portfolio
 
-            pm2 reload ravi-portfolio
-            pm2 save
+                git fetch origin
+                git reset --hard origin/main
+
+                npm ci
+                npm run build
+
+                pm2 reload ravi-portfolio --update-env
